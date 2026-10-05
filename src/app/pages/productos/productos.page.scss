@@ -32,6 +32,19 @@ th {
   gap: 10px;
 }
 
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.page-info {
+  margin: 0 10px;
+}
+
 .volver {
   margin-top: 20px;
 }

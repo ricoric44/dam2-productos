@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import {
@@ -56,6 +56,26 @@ export class ProductosPage implements OnInit {
 
   error = signal('');
 
+  // Paginación
+  readonly pageSize = 10;
+
+  page = signal(1);
+
+  totalPages = computed(() => Math.max(1, Math.ceil(this.total() / this.pageSize)));
+
+  // Posición del primer y último producto mostrados ("Mostrando 11-20 de 194")
+  firstItem = computed(() => (this.page() - 1) * this.pageSize + 1);
+
+  lastItem = computed(() => this.firstItem() + this.products().length - 1);
+
+  goToPage(page: number): void {
+    if (page < 1 || page > this.totalPages() || page === this.page()) {
+      return;
+    }
+    this.page.set(page);
+    this.loadProducts();
+  }
+
   // Stock valorado = unidades * precio - descuento aplicable
   stockValue(product: Product): number {
     const total = product.stock * product.price;
@@ -73,7 +93,9 @@ export class ProductosPage implements OnInit {
 
     this.error.set('');
 
-    this.productService.getProducts()
+    const skip = (this.page() - 1) * this.pageSize;
+
+    this.productService.getProducts(this.pageSize, skip)
       .subscribe({
 
         next: (response: ProductsResponse) => {

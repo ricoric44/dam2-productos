@@ -42,9 +42,9 @@
 
   @if (!loading() && !error()) {
     <p>
-      Productos cargados:
-      <strong>{{ products().length }}</strong>
-      de {{ total() }}
+      Mostrando
+      <strong>{{ firstItem() }}–{{ lastItem() }}</strong>
+      de {{ total() }} productos
     </p>
 
     <div class="table-container">
@@ -105,6 +105,31 @@
           }
         </tbody>
       </table>
+    </div>
+
+    <!-- Paginación -->
+    <div class="pagination">
+      <ion-button size="small" fill="outline"
+        [disabled]="page() === 1" (click)="goToPage(1)">
+        « Primera
+      </ion-button>
+      <ion-button size="small" fill="outline"
+        [disabled]="page() === 1" (click)="goToPage(page() - 1)">
+        ‹ Anterior
+      </ion-button>
+
+      <span class="page-info">
+        Página <strong>{{ page() }}</strong> de {{ totalPages() }}
+      </span>
+
+      <ion-button size="small" fill="outline"
+        [disabled]="page() === totalPages()" (click)="goToPage(page() + 1)">
+        Siguiente ›
+      </ion-button>
+      <ion-button size="small" fill="outline"
+        [disabled]="page() === totalPages()" (click)="goToPage(totalPages())">
+        Última »
+      </ion-button>
     </div>
   }
 
