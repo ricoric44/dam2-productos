@@ -58,6 +58,9 @@
             <th>Precio</th>
             <th>Valoración</th>
             <th>Stock</th>
+            <th>Ancho (cm)</th>
+            <th>Alto (cm)</th>
+            <th>Stock valorado</th>
           </tr>
         </thead>
         <tbody>
@@ -89,11 +92,24 @@
               <td>
                 {{ product.stock }}
               </td>
+              <td>
+                {{ product.dimensions.width | number:'1.2-2' }}
+              </td>
+              <td>
+                {{ product.dimensions.height | number:'1.2-2' }}
+              </td>
+              <td>
+                {{ stockValue(product) | currency:'EUR' }}
+              </td>
             </tr>
           }
         </tbody>
       </table>
     </div>
   }
+
+  <ion-button class="volver" routerLink="/inicio" fill="outline">
+    Volver a inicio
+  </ion-button>
 
 </ion-content>

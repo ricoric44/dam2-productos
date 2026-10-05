@@ -10,7 +10,7 @@
 
 table {
   width: 100%;
-  min-width: 900px;
+  min-width: 1200px;
   border-collapse: collapse;
 }
 
@@ -30,6 +30,10 @@ th {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.volver {
+  margin-top: 20px;
 }
 
 .product img {

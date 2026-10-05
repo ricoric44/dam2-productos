@@ -1,5 +1,6 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, DecimalPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import {
   IonHeader,
   IonToolbar,
@@ -25,6 +26,8 @@ import { ProductService } from '../../services/product.service';
   standalone: true,
   imports: [
     CurrencyPipe,
+    DecimalPipe,
+    RouterLink,
     IonHeader,
     IonToolbar,
     IonTitle,
@@ -52,6 +55,13 @@ export class ProductosPage implements OnInit {
   loading = signal(false);
 
   error = signal('');
+
+  // Stock valorado = unidades * precio - descuento aplicable
+  stockValue(product: Product): number {
+    const total = product.stock * product.price;
+    const discount = total * product.discountPercentage / 100;
+    return total - discount;
+  }
 
   ngOnInit(): void {
     this.loadProducts();

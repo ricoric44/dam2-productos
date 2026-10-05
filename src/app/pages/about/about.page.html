@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      About
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Ricoric Dev</ion-card-title>
+      <ion-card-subtitle>Desarrollo de aplicaciones web y móviles</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>
+        Somos un pequeño estudio de desarrollo especializado en aplicaciones
+        multiplataforma con Ionic y Angular. Creamos apps rápidas y sencillas
+        de usar que consumen datos de APIs REST y funcionan igual de bien en
+        el navegador, en Android y en iOS.
+      </p>
+      <p>
+        Trabajamos con tecnologías actuales (componentes Standalone, signals,
+        despliegue continuo en Vercel y control de versiones con Git) para
+        entregar proyectos fáciles de mantener y ampliar.
+      </p>
+
+      <ion-button [href]="githubUrl" target="_blank" rel="noopener">
+        Ver perfil de GitHub
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button routerLink="/inicio" fill="outline">
+    Volver a inicio
+  </ion-button>
+
+</ion-content>
