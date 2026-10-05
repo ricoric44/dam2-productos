@@ -16,6 +16,8 @@ import {
   IonButton
 } from '@ionic/angular';
 
+import { ThemeToggleComponent } from '../../components/theme-toggle/theme-toggle.component';
+
 import { Product, ProductsResponse } from '../../models/product.model';
 import { ProductService } from '../../services/product.service';
 
@@ -25,6 +27,7 @@ import { ProductService } from '../../services/product.service';
   styleUrls: ['./productos.page.scss'],
   standalone: true,
   imports: [
+    ThemeToggleComponent,
     CurrencyPipe,
     DecimalPipe,
     RouterLink,

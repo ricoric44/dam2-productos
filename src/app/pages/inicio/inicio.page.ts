@@ -5,8 +5,11 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
-  IonButton
+  IonButton,
+  IonButtons
 } from '@ionic/angular';
+
+import { ThemeToggleComponent } from '../../components/theme-toggle/theme-toggle.component';
 
 @Component({
   selector: 'app-inicio',
@@ -14,12 +17,14 @@ import {
   styleUrls: ['./inicio.page.scss'],
   standalone: true,
   imports: [
+    ThemeToggleComponent,
     RouterLink,
     IonHeader,
     IonToolbar,
     IonTitle,
     IonContent,
-    IonButton
+    IonButton,
+    IonButtons
   ]
 })
 export class InicioPage {}
